@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sifat-E-Rabbani | Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="logo">Sifat<span>.</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger">☰</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-greeting reveal-up">✨ Welcome to my portfolio</p>
+      <h1 class="hero-title reveal-up">
+        Hi, I'm <span class="gradient-text">Sifat-E-Rabbani</span>
+      </h1>
+      <h2 class="hero-subtitle reveal-up">
+        <span id="typedText"></span><span class="cursor-blink">|</span>
+      </h2>
+      <p class="hero-desc reveal-up">
+        I build fast, responsive & visually engaging web experiences using modern frontend technologies.
+      </p>
+      <div class="hero-buttons reveal-up">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-socials reveal-up">
+        <a href="https://github.com/SifatpHero1" target="_blank">GitHub</a>
+        <a href="#contact">Email</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <p class="section-label reveal-up">Get To Know Me</p>
+    <h2 class="section-title reveal-up">About Me</h2>
+
+    <div class="about-content">
+      <div class="about-card reveal-up">
+        <div class="about-icon">🎯</div>
+        <h3>Frontend Focused</h3>
+        <p>I specialize in building clean, responsive interfaces using HTML, CSS, JavaScript, React & Next.js.</p>
+      </div>
+      <div class="about-card reveal-up">
+        <div class="about-icon">⚡</div>
+        <h3>Fast Learner</h3>
+        <p>I quickly adapt to new tools, frameworks and workflows — always eager to grow as a developer.</p>
+      </div>
+      <div class="about-card reveal-up">
+        <div class="about-icon">🤝</div>
+        <h3>Team Player</h3>
+        <p>I enjoy collaborating with designers & backend developers to bring ideas to life.</p>
+      </div>
+    </div>
+
+    <p class="about-bio reveal-up">
+      I'm a passionate frontend developer who loves converting designs into pixel-perfect, responsive web pages.
+      I also have experience with Django REST Framework for backend development, which gives me a solid understanding
+      of how frontend and backend connect through REST APIs.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <p class="section-label reveal-up">What I Know</p>
+    <h2 class="section-title reveal-up">My Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-item reveal-up">
+        <div class="skill-top"><span>HTML5</span><span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item reveal-up">
+        <div class="skill-top"><span>CSS3</span><span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item reveal-up">
+        <div class="skill-top"><span>JavaScript</span><span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+      </div>
+      <div class="skill-item reveal-up">
+        <div class="skill-top"><span>React / Next.js</span><span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+      </div>
+      <div class="skill-item reveal-up">
+        <div class="skill-top"><span>Tailwind CSS</span><span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+      </div>
+      <div class="skill-item reveal-up">
+        <div class="skill-top"><span>Git & GitHub</span><span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <p class="section-label reveal-up">My Recent Work</p>
+    <h2 class="section-title reveal-up">Projects</h2>
+
+    <div class="project-grid">
+
+      <div class="project-card reveal-up">
+        <div class="project-top">
+          <span class="project-icon">🚀</span>
+        </div>
+        <h3>Responsive Landing Page</h3>
+        <p>A SaaS-style landing page with animated gradient hero, mobile menu & smooth interactions.</p>
+        <div class="tech-tags">
+          <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+        </div>
+        <a href="https://github.com/SifatpHero1/responsive-landing-page" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-top">
+          <span class="project-icon">✅</span>
+        </div>
+        <h3>To-Do List App</h3>
+        <p>An interactive task manager with add, delete, complete & filter functionality.</p>
+        <div class="tech-tags">
+          <span>JavaScript</span><span>DOM</span><span>CSS3</span>
+        </div>
+        <a href="https://github.com/SifatpHero1/todo-list-app" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-top">
+          <span class="project-icon">💳</span>
+        </div>
+        <h3>Tailwind Pricing Page</h3>
+        <p>A modern pricing UI with 3 subscription tiers, built with utility-first CSS.</p>
+        <div class="tech-tags">
+          <span>Tailwind CSS</span><span>HTML5</span>
+        </div>
+        <a href="https://github.com/SifatpHero1/tailwind-pricing-page" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-top">
+          <span class="project-icon">🌦️</span>
+        </div>
+        <h3>Weather App</h3>
+        <p>A live weather checker built with Next.js, fetching real-time data from a REST API.</p>
+        <div class="tech-tags">
+          <span>Next.js</span><span>REST API</span><span>Tailwind</span>
+        </div>
+        <a href="https://github.com/SifatpHero1/weather-app" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="section-label reveal-up">Get In Touch</p>
+    <h2 class="section-title reveal-up">Contact Me</h2>
+    <p class="contact-desc reveal-up">Have an opportunity or just want to say hi? I'd love to hear from you.</p>
+
+    <form id="contactForm" class="contact-form reveal-up">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="formMessage"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Sifat-E-Rabbani. Built with HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
