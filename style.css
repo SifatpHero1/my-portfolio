@@ -371,16 +371,23 @@ footer {
   border-top: 1px solid var(--border);
 }
 
-/* REVEAL ANIMATIONS */
-.reveal-up {
+/* =============================================
+   REVEAL ANIMATIONS — FAIL-SAFE VERSION
+   Content শুধু তখনই hide হবে যখন JS চলছে (.js class থাকলে)।
+   JS fail করলেও পুরো page পড়া যাবে, blank হবে না।
+   ============================================= */
+.js .reveal-up {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.reveal-up.visible {
+.js .reveal-up.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* JS না চললে skill bars ভরাট দেখাবে (খালি থাকবে না) */
+body:not(.js) .skill-fill { width: 85%; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
