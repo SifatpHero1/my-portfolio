@@ -28,12 +28,12 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Typing effect — Full Stack Developer version
+// Typing effect — ONLY Full Stack related titles (no "Frontend" anywhere)
 const phrases = [
   'Full Stack Developer',
-  'Frontend Specialist',
   'Backend Engineer',
   'API & AI Integrator',
+  'Software Engineer',
   'Problem Solver'
 ];
 let phraseIndex = 0;
@@ -61,12 +61,11 @@ function type() {
 }
 type();
 
-// Reveal on scroll
+// Reveal on scroll + skill bar animation
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      // Animate skill bars
       if (entry.target.classList.contains('skill-item')) {
         const fill = entry.target.querySelector('.skill-fill');
         fill.style.width = fill.dataset.width + '%';
