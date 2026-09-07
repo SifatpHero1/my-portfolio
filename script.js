@@ -1,120 +1,88 @@
-/* ===== Mobile menu ===== */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-
-hamburger.addEventListener('click', function () {
-  navLinks.classList.toggle('active');
-});
-
-document.querySelectorAll('.nav-link').forEach(function (link) {
-  link.addEventListener('click', function () {
-    navLinks.classList.remove('active');
-  });
-});
-
-/* ===== Active nav link on scroll ===== */
-const sections = document.querySelectorAll('section');
-const navItems = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', function () {
-  let current = '';
-  sections.forEach(function (section) {
-    const sectionTop = section.offsetTop - 150;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute('id');
-    }
-  });
-
-  navItems.forEach(function (item) {
-    item.classList.remove('active');
-    if (item.getAttribute('href') === '#' + current) {
-      item.classList.add('active');
-    }
-  });
-});
-
-/* ===== Typing effect in hero ===== */
-const typedText = document.getElementById('typedText');
-const phrases = ['Frontend Developer', 'React & Next.js Enthusiast', 'UI/UX Focused Coder'];
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeLoop() {
-  const currentPhrase = phrases[phraseIndex];
-
-  if (isDeleting) {
-    typedText.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typedText.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
-  }
-
-  let speed = isDeleting ? 45 : 90;
-
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    speed = 1500;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    speed = 400;
-  }
-
-  setTimeout(typeLoop, speed);
-}
-
-typeLoop();
-
-/* ===== Cursor glow follow ===== */
+// Cursor glow
 const cursorGlow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', function (e) {
+document.addEventListener('mousemove', (e) => {
   cursorGlow.style.left = e.clientX + 'px';
   cursorGlow.style.top = e.clientY + 'px';
 });
 
-/* ===== Scroll reveal animation ===== */
-const revealElements = document.querySelectorAll('.reveal-up');
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
 
-const revealObserver = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
+// Active nav on scroll
+const sections = document.querySelectorAll('section');
+const navLinksAll = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) current = section.getAttribute('id');
+  });
+  navLinksAll.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').slice(1) === current) link.classList.add('active');
+  });
+});
+
+// Typing effect — Full Stack Developer version
+const phrases = [
+  'Full Stack Developer',
+  'Frontend Specialist',
+  'Backend Engineer',
+  'API & AI Integrator',
+  'Problem Solver'
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typedText = document.getElementById('typedText');
+
+function type() {
+  const current = phrases[phraseIndex];
+  if (isDeleting) {
+    typedText.textContent = current.substring(0, charIndex--);
+    if (charIndex < 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+  } else {
+    typedText.textContent = current.substring(0, charIndex++);
+    if (charIndex > current.length) {
+      isDeleting = true;
+      setTimeout(type, 1800);
+      return;
+    }
+  }
+  setTimeout(type, isDeleting ? 40 : 90);
+}
+type();
+
+// Reveal on scroll
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      // Animate skill bars
+      if (entry.target.classList.contains('skill-item')) {
+        const fill = entry.target.querySelector('.skill-fill');
+        fill.style.width = fill.dataset.width + '%';
+      }
     }
   });
 }, { threshold: 0.15 });
 
-revealElements.forEach(function (el) {
-  revealObserver.observe(el);
-});
+document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
-/* ===== Skill bar animation ===== */
-const skillFills = document.querySelectorAll('.skill-fill');
-
-const skillObserver = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      const width = entry.target.getAttribute('data-width');
-      entry.target.style.width = width + '%';
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.4 });
-
-skillFills.forEach(function (fill) {
-  skillObserver.observe(fill);
-});
-
-/* ===== Contact form ===== */
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
-
-contactForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  formMessage.textContent = 'Thank you! Your message has been sent.';
-  contactForm.reset();
-  setTimeout(function () {
-    formMessage.textContent = '';
-  }, 4000);
+// Contact form
+const form = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMessage');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  formMsg.textContent = '✓ Thanks for your message! I will get back to you soon.';
+  form.reset();
+  setTimeout(() => formMsg.textContent = '', 5000);
 });
