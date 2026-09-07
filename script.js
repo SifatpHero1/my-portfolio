@@ -1,3 +1,7 @@
+// ⚡ Fail-safe: JS চলছে বোঝাতে body তে .js class add করি
+// (এটা না থাকলে CSS কখনো content hide করবে না → blank page হবে না)
+document.body.classList.add('js');
+
 // Cursor glow
 const cursorGlow = document.getElementById('cursorGlow');
 document.addEventListener('mousemove', (e) => {
@@ -68,7 +72,7 @@ const revealObserver = new IntersectionObserver((entries) => {
       entry.target.classList.add('visible');
       if (entry.target.classList.contains('skill-item')) {
         const fill = entry.target.querySelector('.skill-fill');
-        fill.style.width = fill.dataset.width + '%';
+        if (fill) fill.style.width = fill.dataset.width + '%';
       }
     }
   });
@@ -79,9 +83,11 @@ document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el)
 // Contact form
 const form = document.getElementById('contactForm');
 const formMsg = document.getElementById('formMessage');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  formMsg.textContent = '✓ Thanks for your message! I will get back to you soon.';
-  form.reset();
-  setTimeout(() => formMsg.textContent = '', 5000);
-});
+if (form && formMsg) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formMsg.textContent = '✓ Thanks for your message! I will get back to you soon.';
+    form.reset();
+    setTimeout(() => formMsg.textContent = '', 5000);
+  });
+}
