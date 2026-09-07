@@ -1,21 +1,24 @@
-// ⚡ Fail-safe: JS চলছে বোঝাতে body তে .js class add করি
-// (এটা না থাকলে CSS কখনো content hide করবে না → blank page হবে না)
+// JS চলছে বোঝাতে .js class
 document.body.classList.add('js');
 
 // Cursor glow
 const cursorGlow = document.getElementById('cursorGlow');
 document.addEventListener('mousemove', (e) => {
-  cursorGlow.style.left = e.clientX + 'px';
-  cursorGlow.style.top = e.clientY + 'px';
+  if (cursorGlow) {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+  }
 });
 
 // Mobile menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
 
 // Active nav on scroll
 const sections = document.querySelectorAll('section');
@@ -32,40 +35,44 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Typing effect — ONLY Full Stack related titles (no "Frontend" anywhere)
-const phrases = [
-  'Full Stack Developer',
-  'Backend Engineer',
-  'API & AI Integrator',
-  'Software Engineer',
-  'Problem Solver'
-];
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+// Typing effect — Full Stack titles only
 const typedText = document.getElementById('typedText');
+if (typedText) {
+  const phrases = [
+    'Full Stack Developer',
+    'Backend Engineer',
+    'API & AI Integrator',
+    'Software Engineer',
+    'Problem Solver'
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-function type() {
-  const current = phrases[phraseIndex];
-  if (isDeleting) {
-    typedText.textContent = current.substring(0, charIndex--);
-    if (charIndex < 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
+  (function type() {
+    const current = phrases[phraseIndex];
+    if (isDeleting) {
+      typedText.textContent = current.substring(0, charIndex--);
+      if (charIndex < 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+    } else {
+      typedText.textContent = current.substring(0, charIndex++);
+      if (charIndex > current.length) {
+        isDeleting = true;
+        setTimeout(type, 1800);
+        return;
+      }
     }
-  } else {
-    typedText.textContent = current.substring(0, charIndex++);
-    if (charIndex > current.length) {
-      isDeleting = true;
-      setTimeout(type, 1800);
-      return;
-    }
-  }
-  setTimeout(type, isDeleting ? 40 : 90);
+    setTimeout(type, isDeleting ? 40 : 90);
+  })();
 }
-type();
 
-// Reveal on scroll + skill bar animation
+// Reveal on scroll — আগে .pre (hidden) তারপর scroll এ .visible
+const revealEls = document.querySelectorAll('.reveal-up');
+revealEls.forEach(el => el.classList.add('pre'));
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -74,11 +81,12 @@ const revealObserver = new IntersectionObserver((entries) => {
         const fill = entry.target.querySelector('.skill-fill');
         if (fill) fill.style.width = fill.dataset.width + '%';
       }
+      revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+revealEls.forEach(el => revealObserver.observe(el));
 
 // Contact form
 const form = document.getElementById('contactForm');
