@@ -49,6 +49,7 @@
       </div>
       <div class="hero-socials reveal-up">
         <a href="https://github.com/SifatpHero1" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/sifat-rabbani" target="_blank">LinkedIn</a>
         <a href="#contact">Email</a>
       </div>
     </div>
@@ -224,19 +225,56 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (redesigned: info cards + form, centered) -->
   <section class="contact" id="contact">
-    <p class="section-label reveal-up">Get In Touch</p>
-    <h2 class="section-title reveal-up">Contact Me</h2>
-    <p class="contact-desc reveal-up">Have an opportunity or just want to say hi? I'd love to hear from you.</p>
+    <div class="contact-header">
+      <p class="section-label reveal-up">Get In Touch</p>
+      <h2 class="section-title reveal-up">Contact Me</h2>
+      <p class="contact-desc reveal-up">Have an opportunity or just want to say hi? I'd love to hear from you.</p>
+    </div>
 
-    <form id="contactForm" class="contact-form reveal-up">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p id="formMessage"></p>
+    <div class="contact-grid">
+      <div class="contact-info reveal-up">
+        <div class="info-card">
+          <span class="info-icon">📧</span>
+          <div>
+            <h4>Email</h4>
+            <!-- TODO: তোমার real email দিয়ে replace করো (2 জায়গায়) -->
+            <a href="mailto:your.email@example.com">your.email@example.com</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">💼</span>
+          <div>
+            <h4>GitHub</h4>
+            <a href="https://github.com/SifatpHero1" target="_blank">github.com/SifatpHero1</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">🔗</span>
+          <div>
+            <h4>LinkedIn</h4>
+            <a href="https://www.linkedin.com/in/sifat-rabbani" target="_blank">linkedin.com/in/sifat-rabbani</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <div>
+            <h4>Location</h4>
+            <p>Bangladesh · Open to remote</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm" class="contact-form reveal-up">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <p id="formMessage" class="form-message"></p>
   </section>
 
   <footer>
